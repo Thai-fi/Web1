@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>задание</title>
+	</head>
+	<body>
+		<a href="../index.html">назад</a>
+		Осталось <span id="count">6</span> секунд
+		<script type="text/javascript">
+			var counter = 6;
+			function func_1(){
+				counter--;
+				document.getElementById("count").innerHTML = counter;
+				setTimeout('func_1()', 1000);
+				setTimeout('location.replace("http://www.google.com")', 5000);
+			}
+		</script>
+	</body>
+</html>

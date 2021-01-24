@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>задание</title>
+	</head>
+	<body>
+		<a href="../index.html">назад</a>
+		<a href="#" onClick="pdf()">скачать PDF</a>
+		<p>
+			изменить цвет на
+			<a onMouseOver="white()" onMouseOut ="basic()">Белый</a>/
+			<a onMouseOver="red()" onMouseOut ="basic()">Красный</a>
+		</p>
+	</body>
+	<script type="text/javascript">
+		function pdf(){alert("Для загрузкидокумента требуется программа Acrobat. Продолжить загрузку?")}
+		function red(){document.body.style.background = '#ff0000';}
+		function white(){document.body.style.background = '#ffffff';}
+		function basic(){document.body.style.background = '#30c4f2';}
+	</script>
+</html>

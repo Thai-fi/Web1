@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>задание</title>
+	</head>
+	<body>
+		<a href="../index.html">назад</a>
+		<script language="JavaScript" type="text/JavaScript">
+			function check(text = ' '){
+				var prompt_name = prompt( text + 'Введите свое имя:', 'Введите имя');
+				var nums = 1;
+				confirm(prompt_name+" - ваше имя?");
+				while(confirm("Хорошо, что вы знаете свое имя! Хотите попробовать еще?"))
+				{
+					if(nums<2)
+					{
+						nums=2;
+						person_name = prompt("Введите свое имя:");
+					}
+					else{
+						person_name = prompt("Не надоело? Введите свое имя:");
+					}
+				}
+			}
+			check();
+			document.write('Спасибо, приходите еще!');
+		</script>
+	</body>
+</html>

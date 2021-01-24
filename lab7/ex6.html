@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>задание</title>
+		<style>
+			.hidden{
+				color:white;
+			}
+			.open{
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="../index.html">назад</a>
+		<form action="" >
+			<ul>
+				<li>
+					<div>Ваше имя:</div>
+						<input id="InputName"
+									onChange="ValidName()"
+									name="name"
+									type="text">
+					<div class="hidden" id="InputWarningName">имя обязательно</div>
+				</li>
+				<li>
+					<div>Пароль:</div>
+					<div>
+						<input id="InputPassword"
+									onChange="ValidPassword()"
+									name="password"
+									type="password">
+					</div>
+					<div class="hidden" id="InputWarningPassword">нужно больше 4-х символов</div>
+				</li>
+				<li>
+					<div>Подтверждение пароля:</div>
+					<div>
+						<input id="InputConfPassword"
+									onChange="ValidConfPassword()"
+									name="password_2"
+									type="password">
+					</div>
+					<div class="hidden" id="InputWarningConfPassword">Пароли не совпадают</div>
+				</li>
+				<li>
+					<div>E-mail:</div>
+					<div>
+						<input id="InputEmail"
+									onChange="ValidEmail()"
+									name="email"
+									type="text">
+					</div>
+					<div class="hidden" id="InputWarningEmail">Неверный адрес почты</div>
+				</li>
+				<li>
+					<div>Тема сообщения:</div>
+					<div>
+						<input id="InputTheme"
+									name="theme"
+									type="text">
+					</div>
+				</li>
+				<li>
+					<div>Сообщение:</div>
+					<div>
+						<textarea id="InputMessege"
+											onChange="ValidMessege()"
+											name="info"
+											rows="3"
+											cols="20"></textarea>
+					</div>
+					<div class="hidden" id="InputWarningMessege">нужно больше 10-и символов</div>
+				</li>
+			</ul>
+			<div>
+				<input onclick="ValidFinal()"
+							name="add"
+							type="submit"
+							value="Отправить">
+				<input name="b2"
+							type="reset"
+							value="Очистить">
+			</div>
+		</form>
+	</body>
+	<script type="text/javascript" language="javascript" charset="UTF-8">
+		var Name, WarningName;
+		var Password, WarningPassword;
+		var ConfirmPassword, WarningConfirmPasspassword;
+		var Email, WarningEmail;
+		var Messege, WarningMessege;
+
+		function InValid(input, warning){
+			input.style.border = "2px solid red";
+			warning.classList.add("open");
+			warning.classList.remove("hidden");
+		}
+
+		function Valid(input, warning){
+			input.style.border = "2px solid #B3FFC3";
+			warning.classList.add("hidden");
+			warning.classList.remove("open");
+		}
+
+		function ValidAll(){
+			ValidName();
+			ValidPassword();
+			ValidConfPassword();
+			ValidEmail();
+			ValidMessege();
+			if(ValidName() && ValidPassword() && ValidConfPassword() && ValidEmail() && ValidMessege())
+				return true;
+			else
+				return false;
+		}
+
+		function ValidName(){
+			Name = document.getElementById("InputName");
+			WarningName = document.getElementById("InputWarningName");
+			if(!Name.value){
+				InValid(Name, WarningName);
+			}
+			else{
+				Valid(Name, WarningName);
+				return true;
+			}
+		}
+
+
+	function ValidPassword(){
+		Password = document.getElementById("InputPassword");
+		WarningPassword = document.getElementById("InputWarningPassword");
+		ConfirmPassword = document.getElementById("InputConfPassword");
+		WarningConfirmPassword = document.getElementById("InputWarningConfPassword");
+		if(!Password.value){
+			InValid(Password,WarningPassword);
+		}
+		else if(Password.value.length < 4){
+			InValid(Password,WarningPassword);
+		}
+		else{
+			Valid(Password,WarningPassword);
+			if(Password.value != ConfirmPassword.value){
+				InValid(ConfirmPassword,WarningConfirmPassword);
+			}
+			if(	ConfirmPassword.value.length < 4){
+				InValid(ConfirmPassword,WarningConfirmPassword);
+			}
+
+			return true;
+		}
+	}
+
+	 function ValidConfPassword(){
+		ConfirmPassword = document.getElementById("InputConfPassword");
+		WarningConfirmPassword = document.getElementById("InputWarningConfPassword");
+		Password = document.getElementById("InputPassword");
+		WarningPassword = document.getElementById("InputWarningPassword");
+		if(!ConfirmPassword.value){
+			InValid(ConfirmPassword, WarningConfirmPassword);
+		}
+		else if(ConfirmPassword.value.length < 4){
+			InValid(ConfirmPassword, WarningConfirmPassword);
+		}
+		else{
+			Valid(ConfirmPassword, WarningConfirmPassword);
+			if(Password.value != ConfirmPassword.value){
+				InValid(ConfirmPassword,WarningConfirmPassword);
+			}
+			if(Password.value.length < 4){
+				InValid(ConfirmPassword,WarningConfirmPassword);
+			}
+			return true;
+		}
+	}
+
+	function ValidEmail()
+	{
+		var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+		Email = document.getElementById("InputEmail");
+		WarningEmail = document.getElementById("InputWarningEmail");
+		if(!Email.value){
+			InValid(Email,WarningEmail);
+		}
+		else if(reg.test(Email.value) == false){
+			InValid(Email,WarningEmail);
+		}
+		else {
+			Valid(Email,WarningEmail);
+			return true;
+		}
+	}
+
+	function ValidMessege()
+	{
+		Messege = document.getElementById("InputMessege");
+		WarningMessege = document.getElementById("InputWarningMessege");
+		if(!Messege.value){
+			InValid(Messege,WarningMessege);
+		}
+		else if(Messege.value.length <= 10){
+			InValid(Messege,WarningMessege);
+		}
+		else {
+			Valid(Messege,WarningMessege);
+			return true;
+		}
+	}
+
+	function ValidFinal(){
+		event.preventDefault();
+		if(ValidAll()){
+			alert('Успешно!');
+		}
+		else{
+
+			alert('Ошибка!');
+		}
+	}
+</script>
+</html>

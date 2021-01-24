@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>задание</title>
+	</head>
+	<style>
+
+		#image {
+			background-size: cover;
+			background-position: center;
+			width: 200px;
+			height: 200px;
+			background-image: url("https://cdnimg.rg.ru/i/gallery/b7edef94/11_bab16212.jpg");
+		}
+	</style>
+	<body>
+		<a href="../index.html">назад</a>
+		<div id="image" onMouseOver="Big()" onMouseOut="Small()"></div>
+	</body>
+	<script type="text/javascript" language="javascript" charset="UTF-8">
+		function Big(){
+			var div = document.getElementById('image');
+			div.style.width="300px";
+			div.style.height="300px";
+		}
+		function Small(){
+			var div = document.getElementById('image');
+			div.style.width="200px";
+			div.style.height="200px";
+		}
+		</script>
+</html>
