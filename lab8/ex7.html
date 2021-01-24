@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>задание</title>
+		<style>
+			button{
+				width: 35px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="../index.html">назад</a><br>
+		<input id="answer" type="text"/>
+		<button id="delete"><</button>
+		<button id="cln">C</button><br>
+		<button id="1">1</button>
+		<button id="2">2</button>
+		<button id="3">3</button>
+		<button id="plus">+</button><br>
+		<button id="4">4</button>
+		<button id="5">5</button>
+		<button id="6">6</button>
+		<button id="minus">-</button><br>
+		<button id="7">7</button>
+		<button id="8">8</button>
+		<button id="9">9</button>
+		<button id="drob">/</button><br>
+		<button id="point">.</button>
+		<button id="0">0</button>
+		<button id="equ">=</button>
+		<button id="mult">*</button><br>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+		$("#1").click(function(){
+			$("#answer").val($("#answer").val() + '1');
+		})
+		$("#2").click(function(){
+			$("#answer").val($("#answer").val() + '2');
+		})
+		$("#3").click(function(){
+			$("#answer").val($("#answer").val() + '3');
+		})
+		$("#4").click(function(){
+			$("#answer").val($("#answer").val() + '4');
+		})
+		$("#5").click(function(){
+			$("#answer").val($("#answer").val() + '5');
+		})
+		$("#6").click(function(){
+			$("#answer").val($("#answer").val() + '6');
+		})
+		$("#7").click(function(){
+			$("#answer").val($("#answer").val() + '7');
+		})
+		$("#8").click(function(){
+			$("#answer").val($("#answer").val() + '8');
+		})
+		$("#9").click(function(){
+			$("#answer").val($("#answer").val() + '9');
+		})
+		$("#0").click(function(){
+			$("#answer").val($("#answer").val() + '0');
+		})
+		$("#plus").click(function(){
+			$("#answer").val($("#answer").val() + '+');
+		})
+		$("#minus").click(function(){
+			$("#answer").val($("#answer").val() + '-');
+		})
+		$("#mult").click(function(){
+			$("#answer").val($("#answer").val() + '*');
+		})
+		$("#drob").click(function(){
+			$("#answer").val($("#answer").val() + '/');
+		})
+		$("#point").click(function(){
+			$("#answer").val($("#answer").val() + '.');
+		})
+		$("#delete").click(function(){
+			var type = $("#answer").val();
+			$("#answer").val(type.substring(0, type.length - 1));
+		})
+		$("#cln").click(function(){
+			$("#answer").val('');
+		})
+		$("#equ").click(function(){
+			$("#answer").val(eval($("#answer").val()));
+		})
+	});
+	</script>
+</html>

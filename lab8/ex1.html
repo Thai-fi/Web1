@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>задание</title>
+		<style>
+			.Red{
+				background-color: red;
+				height: 100px;
+			}
+			.Blue{
+				background-color: #547dec;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="../index.html">назад</a>
+		<div id="BG" class="Red">
+			<button class="change">изменить цвет</button>
+		</div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".change").click(function(){
+				if($("#BG").hasClass("Red")){
+					$("#BG").addClass("Blue");
+					$("#BG").removeClass("Red");
+				}
+				else{
+					$("#BG").addClass("Red");
+					$("#BG").removeClass("Blue");
+				}
+			});
+		});
+	</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>задание</title>
+		<style>
+			.Red{
+				background-color: red;
+			}
+			.White{
+				background-color: white;
+			}
+			#image{
+				width: 300px;
+				height: 200px;
+			}
+			body{
+				height: 700px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="../index.html">назад</a><br>
+		<img id="image" src="https://cdnimg.rg.ru/i/gallery/b7edef94/11_bab16212.jpg">
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.2/jquery-ui.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#image").draggable({
+				containment: "parent"
+			}).filter('#dragH').draggable("option", "axis", "x");
+		});
+
+		$(document).mouseup(function() {
+			$('body').addClass("White");
+			$('body').removeClass("Red");
+		}).mousedown(function() {
+			$('body').addClass("Red");
+			$('body').removeClass("White");
+		});
+	</script>
+</html>

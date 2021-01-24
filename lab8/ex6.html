@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>задание</title>
+		<style>
+			span{
+				margin-left: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="../index.html">назад</a><br>
+		<p>Каков шанс наступения конца света?</p>
+		<input name="choice" type="radio" value="val-1">не наступит<span id="answer_1"></span><br>
+		<input name="choice" type="radio" value="val-2">малый шанс есть<span id="answer_2"></span><br>
+		<input name="choice" type="radio" value="val-3">ну 50 на 50<span id="answer_3"></span><br>
+		<input name="choice" type="radio" value="val-4">уже скоро<span id="answer_4"></span><br>
+		<input name="choice" type="radio" value="val-5">через минуту<span id="answer_5"></span><br>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script>
+		function Rand(min, max) {
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		};
+
+		$(document).ready(function(){
+			var firstVoice = Rand(0, 100);
+			var Voices = [];
+			var sumVoice = 100;
+
+			for (var i = 0; i < 5; i++) {
+
+				sumVoice = sumVoice - firstVoice;
+				if(sumVoice != 0){
+					Voices.push(firstVoice);
+					firstVoice = Rand(0,sumVoice);
+				}
+				else{
+					Voices.push(0);
+				}
+			};
+			answer = false;
+			$('input').click(function(){
+				if(!answer){
+					for(var i = 0; i < 5; i++) {
+						$('#answer_'+(i+1)).html(Voices[i]+"%");
+					};
+					answer = true;
+				};
+			});
+		});
+	</script>
+</html>

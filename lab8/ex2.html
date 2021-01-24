@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>задание</title>
+		<style>
+			.hidden{
+				color:white;
+			}
+			.open{
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="../index.html">назад</a>
+		<form action="" >
+			<ul>
+				<li>
+					<div>Ваше имя:</div>
+						<input id="InputName"
+									name="name"
+									type="text">
+					<div class="hidden" id="InputWarningName">имя обязательно</div>
+				</li>
+				<li>
+					<div>Пароль:</div>
+					<div>
+						<input id="InputPassword"
+									name="password"
+									type="password">
+					</div>
+					<div class="hidden" id="InputWarningPassword">нужно больше 4-х символов</div>
+				</li>
+				<li>
+					<div>Подтверждение пароля:</div>
+					<div>
+						<input id="InputConfPassword"
+									name="password_2"
+									type="password">
+					</div>
+					<div class="hidden" id="InputWarningConfPassword">Пароли не совпадают</div>
+				</li>
+				<li>
+					<div>E-mail:</div>
+					<div>
+						<input id="InputEmail"
+									name="email"
+									type="text">
+					</div>
+					<div class="hidden" id="InputWarningEmail">Неверный адрес почты</div>
+				</li>
+				<li>
+					<div>Тема сообщения:</div>
+					<div>
+						<input id="InputTheme"
+									name="theme"
+									type="text">
+					</div>
+				</li>
+				<li>
+					<div>Сообщение:</div>
+					<div>
+						<textarea id="InputMessege"
+											name="info"
+											rows="3"
+											cols="20"></textarea>
+					</div>
+					<div class="hidden" id="InputWarningMessege">нужно больше 10-и символов</div>
+				</li>
+			</ul>
+			<div>
+				<input name="add"
+							type="submit"
+							value="Отправить">
+				<input name="b2"
+							type="reset"
+							value="Очистить">
+			</div>
+		</form>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			var validName = false;
+			var validPass = false;
+			var validPass2 = false;
+			var validEmail = false;
+			var validMess = false;
+
+			$("form").submit(function(event){
+				event.preventDefault();
+
+				var border = "border";
+				var InValid = "2px solid red";
+				var Valid = "2px solid #B3FFC3";
+
+				var Name = $("#InputName");
+				var WarningName = $("#InputWarningName");
+				var Password = $("#InputPassword");
+				var WarningPassword = $("#InputWarningPassword");
+				var ConfirmPassword = $("#InputConfPassword");
+				var WarningConfirmPassword = $("#InputWarningConfPassword");
+				var Email = $("#InputEmail");
+				var WarningEmail = $("#InputWarningEmail");
+				var Messege = $("#InputMessege");
+				var WarningMessege = $("#InputWarningMessege");
+
+				if(Name.val() == ""){
+					Name.css(border, InValid);
+					WarningName.addClass('open').removeClass('hidden');
+				}
+				else {
+					Name.css(border, Valid);
+					WarningName.addClass('hidden').removeClass('open');
+					validName = true;
+				}
+
+				if(Password.val() == ""){
+					Password.css(border, InValid);
+					WarningPassword.addClass('open').removeClass('hidden');
+				}
+				else if(Password.val().length < 4){
+					Password.css(border, InValid);
+					WarningPassword.addClass('open').removeClass('hidden');
+				}
+				else {
+					Password.css(border, Valid);
+					WarningPassword.addClass('hidden').removeClass('open');
+					if(Password.val() != ConfirmPassword.val()){
+						ConfirmPassword.css(border, InValid);
+						WarningConfirmPassword.addClass('open').removeClass('hidden');
+					}
+					if(ConfirmPassword.val().length < 4){
+						ConfirmPassword.css(border, InValid);
+						WarningConfirmPassword.addClass('open').removeClass('hidden');
+					}
+					validPass = true;
+				}
+
+				if(ConfirmPassword.val() == ""){
+					ConfirmPassword.css(border, InValid);
+					WarningConfirmPassword.addClass('open').removeClass('hidden');
+				}
+				else if(ConfirmPassword.val().length < 4){
+					ConfirmPassword.css(border, InValid);
+					WarningConfirmPassword.addClass('open').removeClass('hidden');
+				}
+				else {
+					ConfirmPassword.css(border, Valid);
+					WarningConfirmPassword.addClass('hidden').removeClass('open');
+					if(Password.val() != ConfirmPassword.val()){
+						ConfirmPassword.css(border, InValid);
+						WarningConfirmPassword.addClass('open').removeClass('hidden');
+					}
+					if(Password.val().length < 4){
+						ConfirmPassword.css(border, InValid);
+						WarningConfirmPassword.addClass('open').removeClass('hidden');
+					}
+					validPass2 = true;
+				}
+
+
+				if (Email.val() == ""){
+					Email.css(border, InValid);
+					WarningEmail.addClass('open').removeClass('hidden');
+				}
+				else {
+					if ((Email.val().match(/.+?\@.+/g) || []).length !== 1)
+					{
+						Email.css(border, InValid);
+						WarningEmail.addClass('open').removeClass('hidden');
+					}
+					else {
+						Email.css(border, Valid);
+						WarningEmail.addClass('hidden').removeClass('open');
+						validEmail = true;
+					}
+				}
+
+				if (Messege.val() == ""){
+					Messege.css(border, InValid);
+					WarningMessege.addClass('open').removeClass('hidden');
+				}
+				else {
+					if(Messege.val().length < 10){
+						Messege.css(border, InValid);
+						WarningMessege.addClass('open').removeClass('hidden');
+					}
+					else{
+						Messege.css(border, Valid);
+						WarningMessege.addClass('hidden').removeClass('open');
+						validMess = true;
+					}
+				}
+
+				if(validName && validPass && validPass2 && validEmail && validMess)
+				{
+					alert("Успешно");
+					$("form").unbind('submit').submit();
+				}
+				else{
+					alert("что то заполнено неверно");
+				}
+			});
+		});
+	</script>
+</html>
