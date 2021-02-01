@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>задание</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script src="lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="main.js"></script>
+		<link type="text/css" rel="stylesheet" href="lib/jquery-ui-1.12.1.custom/jquery-ui.css">
+		<style>
+			body{
+				font-family: "Montserrat";
+			}
+
+			.image{
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+
+			.buyList{
+				margin-top: 10px;
+				min-height: 500px;
+				padding: 25px;
+				background-color: white;
+				border: 0.5px solid rgb(0, 0, 0, 0.2);
+				border-radius: 4px;
+			}
+
+			.listContainer{
+				max-width: 1000px;
+				margin: 0 auto;
+			}
+
+			.hidden{
+				display: none;
+			}
+
+			.costPanel{
+				margin-top: 20px;
+			}
+
+			.slider{
+				margin: 10px auto 0;
+				width: 100%;
+			}
+
+			.namePanel{
+				margin: 50px auto 0;
+			}
+
+			.form-inline{
+				margin-top: 40px;
+			}
+
+			.form-group{
+				margin-top: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<button class="btn btn-success" id="open">
+			<a href="../index.html">назад</a>
+		</button>
+		<!-- tabs -->
+		<div id="tabs" class="tab">
+			<ul>
+				<li><a href="#tabs-1">lamborghini</a></li>
+				<li><a href="#tabs-2">Ferrari</a></li>
+				<li><a href="#tabs-3">Bugatti</a></li>
+			</ul>
+			<div id="tabs-1">
+				<h2>Lamborghini Urus</h2>
+				<div style="display: flex;">
+					<div style="width: 70%; height: 400px; overflow: hidden;">
+						<img class="image" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2020-lamborghini-urus-mmp-1-1570563282.jpg?crop=0.923xw:0.702xh;0.00801xw,0.298xh&resize=1200:*" alt="">
+					</div>
+					<div style="width: 20%; margin: auto 5%;">
+						<span id="LamboCost"style="font-size:30px;">16 500 000 руб.</span>
+						<button id="buyLambo" style="padding: 15px 100px; bottom: 0;">Купить</button>
+					</div>
+				</div>
+				<div>
+
+					<p>
+						Lamborghini Urus — первый кроссовер (SSUV - Super Sport Utility Vehicle) от
+						итальянского производителя автомобилей Lamborghini.
+						Автомобиль был представлен 4 декабря 2017 года на заводе Lamborghini в Сант'Агата-Болоньезе
+					</p>
+				</div>
+			</div>
+
+			<div id="tabs-2" class="tab">
+				<h2>Ferrari FF</h2>
+				<div style="display: flex;">
+					<div style="width: 70%; height: 400px; overflow: hidden;">
+						<img class="image" src="https://api.ferrarinetwork.ferrari.com/v2/network-content/medias/resize/5da48c5fae4f480ab47d9060-ferrari-ff-social?apikey=9QscUiwr5n0NhOuQb463QEKghPrVlpaF&width=1080" alt="">
+					</div>
+					<div style="width: 20%; margin: auto 5%;">
+						<span id="FerrariCost" style="font-size:30px;">23 555 555 руб.</span>
+						<button id="buyFerrari" style="padding: 15px 100px; bottom: 0;">Купить</button>
+					</div>
+				</div>
+				<p>
+					Ferrari FF (FF означает «Ferrari Four», то есть четыре места и четыре ведущих колеса) —
+					автомобиль класса Гран Туризмо, показанный Ferrari 21 января 2011 года. Его официальная презентация
+					была проведена 1 марта 2011 года на Женевском автосалоне. В этой модели есть две принципиально новые
+					для автомобилей, выпускаемых в Маранелло особенности — это первый полноприводник Ferrari, и её первый
+					суперкар в кузове хетчбэк. Его разработчики из кузовного ателье Carrozzeria Pininfarina S.p.A. выбрали для
+					трехдверного полноприводного суперкара редкую в настоящее время модификацию универсала под названием Shooting-Brake
+					(дословный перевод — «охотничий привал»).
+					Такой кузов обеспечивает удобство трансформации салона при стильном внешнем виде.
+				</p>
+			</div>
+
+			<div id="tabs-3" class="tab">
+				<h2>Bugatti Veyron Super Sport</h2>
+				<div style="display: flex;">
+					<div style="width: 70%; height: 400px; overflow: hidden;">
+						<img class="image" src="https://www.classicdriver.com/sites/default/files/cars_images/feed_620567/904838556b515829a906ed690669549fa4a2bfd9.jpg" alt="">
+					</div>
+					<div style="width: 20%; margin: auto 5%;">
+						<span id="BugattiCost" style="font-size:30px;">280 000 000 руб.</span>
+						<button id="buyBugatti" style="padding: 15px 100px; bottom: 0;">Купить</button>
+					</div>
+				</div>
+				<p>
+					Bugatti Veyron — гиперкар компании Bugatti, производившийся с 2005 по 2015 год.
+					Назван в честь французского легендарного гонщика Пьера Вейрона, победителя 1939 года в гонках 24 часа Ле-Мана.
+					В 2010 году журналы Top Gear и Robb Report присудили награду «Автомобиль десятилетия» Bugatti Veyron и
+					модификации Grand Sport соответственно. Модификация Super Sport в 2010 году побила мировой рекорд скорости и
+					стала самым быстрым серийным автомобилем в мире. Производство Veyron на данный момент завершено, всего было
+					продано 450 автомобилей: 300 купе и 150 родстеров.	Его преемником является Bugatti Chiron,
+					официально представленный на женевском автосалоне в 2016 году
+				</p>
+			</div>
+		</div>
+		<!-- //tabs// -->
+		<div class="buyList hidden">
+			<div class="listContainer">
+				<div style="display: flex;">
+					<h2>Покупка <span id="buyAuto"></span></h2>
+					<span id="autpBack" style="margin-top: 23px; margin-left:20px; font-size: 20px; cursor: pointer;">отмена</span>
+				</div>
+
+
+
+				<form class="form-inline" >
+
+					<div class="form-group">
+						1) ФИО
+						<input id="name" type="text" name="nameInput" size="55">
+					</div>
+
+					<div class="form-group">
+						2) Количество:
+						<span id="tickets">1</span>
+					</div>
+					<div class="slider" id="slider"></div>
+
+					<div class="form-group">
+						<label for="date">3) Дата доставки: </label>
+						<input id="date" type="text" class="form-control" id="date">
+					</div>
+
+					<div style="width: 100%; display: flex;">
+
+						<div class="form-group" style="width: 50%;">
+							<label>4) Выбреите Город: </label>
+							<select id="selectCity">
+								<option disabled selected>-</option>
+								<option value="Moscow">Москва</option>
+								<option value="Spb">Санкт-петербург</option>
+								<option value="Kazan">Казань</option>
+								<option value="Ufa">Уфа</option>
+								<option value="Vladivos">Владивосток</option>
+							</select>
+						</div>
+
+						<div class="form-group" style="width: 40%;">
+							<label for="search"> Адрес: </label>
+							<input type="text" class="form-control" id="search">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label>5) Промокд: </label>
+						<input type="text" class="form-control" id="promo">
+						<a id="tooltipEx" href="#" title="Узнавайте у партнеров"><img style="width: 20px;" src="img/questionMark.svg" alt="help"></a>
+					</div>
+
+					<div class="form-group">
+						<label for="cost">Итого: </label>
+						<input type="text" class="form-control" id="cost">
+						<label for="cost">руб.</label>
+					</div>
+
+					<div class="form-group">
+						<button id="BUY">Оформить</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+		<div id="dialogBuy">
+			Name: <span id="diName"></span><br>
+			Auto: <span id="diAuto"></span><br>
+			copy: <span id="dikol"></span><br>
+			Date delivery : <span id="diDate"></span><br>
+			City: <span id="diCity"></span><br>
+			Address: <span id="diAddress"></span><br>
+			Cost: <span id="diCost"></span><br>
+			<button id="buyOk">ок</button>
+		</div>
+		<div id="dialogErr">
+			<p>Что то заполнено не верно</p>
+			<button id="errOk">ок</button>
+		</div>
+	</body>
+</html>
