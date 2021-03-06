@@ -5,10 +5,12 @@ import { Home } from './pages/Home'
 import { About} from './pages/About'
 import { Navbar } from './components/Navbar';
 import { Alert } from './components/Alert';
+import { AlertState } from './context/alert/AlertState';
 
 function App() {
   return (
-    <BrowserRouter>
+		<AlertState>
+			<BrowserRouter>
 			<Navbar />
 			<div className="container pt-4">
 				<Alert />
@@ -17,7 +19,8 @@ function App() {
 					<Route path={'/about'} exact component={About}/>
 				</Switch>
 			</div>
-		</BrowserRouter>
+			</BrowserRouter>
+		</AlertState>
   );
 }
 
