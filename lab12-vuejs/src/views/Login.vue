@@ -17,10 +17,10 @@
 					Поле Email не должно быть пустым
 				</small>
 				<small
-					class="helper-text invalid"
+					class="helper-textinvalid"
 					v-else-if="$v.email.$dirty && !$v.email.email"
 				>
-					Email не корректный
+					Поле Email не корректно
 				</small>
 			</div>
 			<div class="input-field">
@@ -33,13 +33,13 @@
 				<label for="password">Пароль</label>
 				<small
 					class="helper-text invalid"
-					v-if="$v.password.$dirty && !$v.password.required"
+					v-if="$v.email.$dirty && !$v.email.required"
 				>
 				Поле пароль не должно быть пустым
 				</small>
 				<small
 					class="helper-text invalid"
-					v-else-if="$v.password.$dirty && !$v.password.minLength"
+					v-else-if="$v.email.$dirty && !$v.email.minLength"
 				>
 				Пароль слишком короткий
 				</small>
@@ -63,7 +63,6 @@
 
 <script>
 import {email, required, minLength} from 'vuelidate/lib/validators'
-import messages from '@/utils/messages.js'
 
 export default {
 	name: 'login',
@@ -75,13 +74,8 @@ export default {
 		email: {email, required},
 		password: {required, minLength: minLength(6)}
 	},
-	mounted(){
-		if(messages[this.$route.query.message]){
-			this.$message(messages[this.$route.query.message])
-		}
-	},
 	methods: {
-		async submitHandler(){
+		submitHandler(){
 			if(this.$v.$invalid){
 				this.$v.$touch()
 				return
@@ -90,11 +84,7 @@ export default {
 				email: this.email,
 				password: this.password
 			}
-
-			try {
-				await this.$store.dispatch('login', formData)
-				this.$router.push('/')
-			} catch (e){}
+			this.$router.push('/')
 		}
 	}
 }
