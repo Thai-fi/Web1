@@ -28,9 +28,8 @@ export default {
 			return user ? user.uid : null
 		},
 		/* async asda(){}, */
-		async logout({commit}) {
+		async logout() {
 			await firebase.auth().signOut()
-			await commit(clearInfo)
 		}
 	}
 }
