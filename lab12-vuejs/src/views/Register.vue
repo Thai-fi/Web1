@@ -104,7 +104,7 @@ export default {
 		agree: {checked: v => v}
 	},
 	methods: {
-		async submitHandler(){
+		submitHandler(){
 			if(this.$v.$invalid){
 				this.$v.$touch()
 				return
@@ -114,10 +114,7 @@ export default {
 				password: this.password,
 				name: this.name
 			}
-			try{
-				await this.$store.dispatch('register', formData)
-				this.$router.push('/')
-			}catch(e){}
+			this.$router.push('/')
 		}
 	}
 }
