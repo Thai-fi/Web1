@@ -5,8 +5,8 @@ import { firebaseReducer } from './firebaseReducer';
 import { ADD_NOTE, FETCH_NOTES, REMOVE_NOTE, SHOW_LOADER } from '../types';
 
 //не работает env.
-const url = 'https://lr12-reactjs-default-rtdb.firebaseio.com'
-require('dotenv').config()
+
+const url = `${process.env.REACT_APP_DB_URL}`
 export const FirebaseState = ({children}) => {
 	const initialState = {
 		notes: [],
