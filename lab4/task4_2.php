@@ -7,14 +7,15 @@
 	</head>
 	<body>
 	<?php
-		$mysqli = new mysqli("localhost", "root", "root", "web2");
+		require "../config.php";
+		$mysqli = new mysqli($localhost, $login, $password, $db);
 		if ($mysqli->connect_errno)
 		{
 			printf("Connect failed: %s\n", $mysqli->connect_error);
 			exit();
 		}
 	?>
-	<h2>Холодильники</h2>:</h2>
+	<h2>Холодильники</h2>
 	<table border="1">
 	<tr>
  	<th> Фирма </th> <th> модель </th> <th> разморозка </th> <th> объем </th>

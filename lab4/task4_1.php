@@ -3,7 +3,8 @@
 	<title> Сведения о прользователях сайта </title> </head>
 	<body>
 	<?php
-		$mysqli = new mysqli("localhost", "root", "root", "web2");
+		require "../config.php";
+		$mysqli = new mysqli($localhost, $login, $password, $db);
 		if ($mysqli->connect_errno)
 		{
 			printf("Connect failed: %s\n", $mysqli->connect_error);

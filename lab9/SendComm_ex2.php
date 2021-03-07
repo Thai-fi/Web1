@@ -1,5 +1,6 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "root", "web2");
+require "../config.php";
+$mysqli = new mysqli($localhost, $login, $password, $db);
 if (mysqli_connect_errno()) {
 	printf("Connect failed: %s\n", mysqli_connect_error());
 	exit();
