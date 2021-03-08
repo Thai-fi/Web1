@@ -30,9 +30,12 @@ function SendAJAX(){
 		dataType: "json",
 		success: function(response){
 			if(response){
+				alert("Done.");
 				LoadAJAX();
 			}
-
+			else{
+				console.log('no')
+			}
 		}
 	});
 }
@@ -119,7 +122,6 @@ function Validation(){
 		{
 			alert("Все поля заполнены верно");
 			SendAJAX();
-			return false;
 		}
 		else{
 			alert("Что то заполнено неверно");

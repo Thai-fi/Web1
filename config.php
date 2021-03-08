@@ -1,6 +1,6 @@
 <?php
- $localhost = "localhost";
- $login = "root";
- $password = "root";
- $db = "Web2";
+    $localhost = "localhost";
+    $login = "f0513576_Thifi";
+    $password = "kappa";
+    $db = "f0513576_Web2";
 ?>

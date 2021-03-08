@@ -53,11 +53,11 @@
 				$buf=$i;
 				while($buf > 1)
 				{
-					$dec=$dec + $buf%10;
+					$dec= $dec + $buf % 10;
 					$buf = $buf/10;
 				}
-				if(($i%$dec) == 0){
-					print ($i .'-');
+				if($i % $dec == 0){
+					print ($i.'-');
 				}
 			}
 		?>
