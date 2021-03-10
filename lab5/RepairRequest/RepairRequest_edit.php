@@ -25,8 +25,8 @@ if ($result = $mysqli->query($query))
 	while ($st=mysqli_fetch_array($result))
 	{
 		$id=$_GET['r_id'];
-		$datestart = $st['r_datestart'];
-		$datefinish = $st['r_datefinish'];
+		$datestart = explode(":", $st['r_datestart'], 3);
+		$datefinish = explode(":", $st['r_datefinish'], 3);
 		$fridge_id = $st['rf_id'];
 		$center_id = $st['rs_id'];
 		$fio = $st['r_fio'];
@@ -44,13 +44,41 @@ if ($result = $mysqli->query($query))
 	}
 }
 	print "<form action='RepairRequest_save_edit.php' metod='get'>";
-	print "Дата начала: 				<input name='datestart' 	size='50' type='datetime' value='".$datestart."'>";
-	print "<br> Дата конца: 		<input name='datefinish' 	size='20' type='datetime' value='".$datefinish."'>";
-	print "<br>Холодильник:		  <input name='fridge' 			size='20' type='text' 		value='".$fridge."'>";
-	print "<br>Сервисный центр: <input name='center' 			size='30' type='text' 		value='".$center."'>";
-	print "<br>ФИО владельца: 	<input name='fio' 	 			size='20' type='text' 		value='".$fio."'>";
+	print "Дата начала: <input name='datestart_day'     size='3' type='datetime' placeholder='дд'   value='" .$datestart[0] ."'>";
+	print							 "<input name='datestart_mounth'  size='3' type='datetime' placeholder='мм'   value='" .$datestart[1] ."'>";
+	print							 "<input name='datestart_year'    size='5' type='datetime' placeholder='гггг' value='" .$datestart[2] ."'><br>";
+	print "Дата конца: 	<input name='datefinish_day'    size='3' type='datetime' placeholder='дд'   value='" .$datefinish[0] ."'>";
+	print							 "<input name='datefinish_mounth' size='3' type='datetime' placeholder='мм'   value='" .$datefinish[1] ."'>";
+	print							 "<input name='datefinish_year'   size='5' type='datetime' placeholder='гггг' value='" .$datefinish[2] ."'><br>";
+
+	$query = "SELECT f_id, f_name FROM fridges WHERE f_id != '". $fridge_id ."'";
+	echo "Холодильник: <select name='fridge'>";
+	echo "<option value='". $fridge_id ."' selected>". $fridge ."</option>";
+	if ($result = $mysqli->query($query))
+	{
+		while ($row = mysqli_fetch_array($result))
+		{
+			echo "<option value='". $row['f_id'] ."'>".$row['f_name']."</option>";
+		}
+		echo "<select><br>";
+		echo "Сервисный центр:";
+	}
+
+	$query = "SELECT s_id, s_name FROM servicecenter WHERE s_id != '". $center_id ."'";
+	echo "Сервисный центр: <select name='servicecenter'>";
+	echo "<option value='". $center_id ."' selected>". $center ."</option>";
+	if ($result = $mysqli->query($query))
+	{
+		while ($row = mysqli_fetch_array($result))
+		{
+			echo "<option value='". $row['s_id'] ."'>" . $row['s_name'] . "</option>";
+		}
+		echo "<select><br>";
+	}
+
+	print "ФИО владельца: 	<input name='fio' 	 			size='20' type='text' 		value='".$fio."'>";
 	print "<br>Цена: 						<input name='cost'   			size='20' type='text' 		value='".$cost."'>";
-	print "<br>ID:	 						<input name='id' 										type='hidden' 	value='".$id."'> <br>";
+	print "<input name='id' 										type='hidden' 	value='".$id."'> <br>";
 	print "<input type='submit' name='' value='Сохранить'>";
 	print "</form>";
 	print "<p><a href=\"RepairRequest.php\"> Вернуться к списку</a>";

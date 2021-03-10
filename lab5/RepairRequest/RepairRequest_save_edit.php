@@ -19,10 +19,14 @@
 		$center_id = $row1['s_id'];
 	}
 
-	$zapros="UPDATE repairrequest SET r_datestart='".$_GET['datestart']."'
-																 , r_datefinish='".$_GET['datefinish']."'
-																				, rf_id='".$fridge_id."'
-																		 		, rs_id='".$center_id."'
+	$dateStart = $_GET['datestart_day'] . ":" . $_GET['datestart_mounth'] . ":" . $_GET['datestart_year'];
+	$dateFinish = $_GET['datefinish_day'] . ":" . $_GET['datefinish_mounth'] . ":" . $_GET['datefinish_year'];
+
+
+	$zapros="UPDATE repairrequest SET r_datestart='".$dateStart."'
+																 , r_datefinish='".$dateFinish."'
+																				, rf_id='".$_GET['fridge']."'
+																		 		, rs_id='".$_GET['servicecenter']."'
 																				, r_fio='".$_GET['fio']."'
 																			 , r_cost='".$_GET['cost']."'
 																		 WHERE r_Id=".$_GET['id'];

@@ -6,22 +6,13 @@
 		exit();
 	}
 
-	$subquery1 = "SELECT f_id FROM fridges WHERE f_name ='".$_GET['fridge_']."'";
-	$result1 = $mysqli->query($subquery1);
-	while ($row1 = mysqli_fetch_array($result1)){
-		$fridge_id = $row1['f_id'];
-		echo $fridge_id;
-	}
-	$subquery1 = "SELECT s_id FROM servicecenter WHERE s_name='".$_GET['center_']."'";
-	$result1 = $mysqli->query($subquery1);
-	while ($row1 = mysqli_fetch_array($result1)){
-		$service_id = $row1['s_id'];
-		echo $service_id;
-	}
-	$sql_add = "INSERT INTO repairrequest SET r_datestart='".$_GET['datestart_']."'
-										   									 , r_datefinish='".$_GET['datefinish_']."'
-								                                , rf_id='".$fridge_id."'
-									                              , rs_id='".$service_id."'
+	$dateStart = $_GET['datestart_day'] . ":" . $_GET['datestart_mounth'] . ":" . $_GET['datestart_year'];
+	$dateFinish = $_GET['datefinish_day'] . ":" . $_GET['datefinish_mounth'] . ":" . $_GET['datefinish_year'];
+
+	$sql_add = "INSERT INTO repairrequest SET r_datestart='".$dateStart."'
+										   									 , r_datefinish='".$dateFinish."'
+								                                , rf_id='".$_GET['fridge']."'
+									                              , rs_id='".$_GET['servicecenter']."'
 									                              , r_fio='".$_GET['fio_']."'
 								                               , r_cost='".$_GET['cost_']."'";
 	if ($result = $mysqli->query($sql_add)){
@@ -29,6 +20,7 @@
 		print "<p><a href=\"RepairRequest.php\">Вернуться к списку</a>";
 	}
 	else {
+		print $sql_add;
 		print "Ошибка сохранения. <a href=\"RepairRequest.php\">Вернуться к списку</a>";
 	}
 ?>

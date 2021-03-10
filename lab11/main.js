@@ -1,6 +1,6 @@
 
 (function($) {
-	$.fn.myPlugin = function() {
+	$.fn.TicTac = function() {
 		getTable(this);
 	};
 })(jQuery);
