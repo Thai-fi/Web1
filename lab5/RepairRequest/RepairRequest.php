@@ -46,6 +46,8 @@
 		$num_rows = mysqli_num_rows($result); // число записей в таблице БД
 		print("<P>Всего:$num_rows</p>");
 	?>
-	<p><a href="RepairRequest_new.php">Добавить</a>
+	<p><a href="RepairRequest_new.php">Добавить</a></br></br>
+	<a href="Excel_report.php">Отчет Excel</a></br>
+	<a href="Pdf_report.php">Отчет pdf</a>
 	</body>
 </html>

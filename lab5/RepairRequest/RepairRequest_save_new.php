@@ -6,8 +6,8 @@
 		exit();
 	}
 
-	$dateStart = $_GET['datestart_day'] . ":" . $_GET['datestart_mounth'] . ":" . $_GET['datestart_year'];
-	$dateFinish = $_GET['datefinish_day'] . ":" . $_GET['datefinish_mounth'] . ":" . $_GET['datefinish_year'];
+	$dateStart = $_GET['datestart_day'] . "." . $_GET['datestart_mounth'] . "." . $_GET['datestart_year'];
+	$dateFinish = $_GET['datefinish_day'] . "." . $_GET['datefinish_mounth'] . "." . $_GET['datefinish_year'];
 
 	$sql_add = "INSERT INTO repairrequest SET r_datestart='".$dateStart."'
 										   									 , r_datefinish='".$dateFinish."'

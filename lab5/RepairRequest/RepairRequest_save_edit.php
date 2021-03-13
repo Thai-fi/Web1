@@ -19,8 +19,8 @@
 		$center_id = $row1['s_id'];
 	}
 
-	$dateStart = $_GET['datestart_day'] . ":" . $_GET['datestart_mounth'] . ":" . $_GET['datestart_year'];
-	$dateFinish = $_GET['datefinish_day'] . ":" . $_GET['datefinish_mounth'] . ":" . $_GET['datefinish_year'];
+	$dateStart = $_GET['datestart_day'] . "." . $_GET['datestart_mounth'] . "." . $_GET['datestart_year'];
+	$dateFinish = $_GET['datefinish_day'] . "." . $_GET['datefinish_mounth'] . "." . $_GET['datefinish_year'];
 
 
 	$zapros="UPDATE repairrequest SET r_datestart='".$dateStart."'
