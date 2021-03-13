@@ -25,8 +25,8 @@ if ($result = $mysqli->query($query))
 	while ($st=mysqli_fetch_array($result))
 	{
 		$id=$_GET['r_id'];
-		$datestart = explode(":", $st['r_datestart'], 3);
-		$datefinish = explode(":", $st['r_datefinish'], 3);
+		$datestart = explode(".", $st['r_datestart'], 3);
+		$datefinish = explode(".", $st['r_datefinish'], 3);
 		$fridge_id = $st['rf_id'];
 		$center_id = $st['rs_id'];
 		$fio = $st['r_fio'];

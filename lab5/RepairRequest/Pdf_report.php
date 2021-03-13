@@ -29,7 +29,7 @@ $columnLabels = array("№",
 
 $pdf = new tfPDF();
 
-$pdf->AddFont('DejaVu', '', 'DejaVuSansCondensed.ttf', true);
+$pdf->AddFont('DejaVu', '', 'DejaVuSansCondensed-Bold.ttf', true);
 
 $pdf->SetTextColor( $textColour[0],
 										$textColour[1],
@@ -76,14 +76,17 @@ for ( $i=0; $i<count($columnLabels); $i++ ) {
 	else if($i == 1 or $i == 2){
 		$l = 35;
 	}
-	else if($i == 1 or $i == 2){
-		$l = 35;
+	else if($i == 3){
+		$l = 28;
+	}
+	else if ($i == 4){
+		$l = 20;
+	}
+	else if ($i == 5){
+		$l = 40;
 	}
 	else if ($i == 6){
 		$l = 20;
-	}
-	else{
-		$l = 25;
 	}
 	$pdf->Cell( $l, 12, $columnLabels[$i], 1, 0, 'C', true );
 }
@@ -111,14 +114,14 @@ while ($row = mysqli_fetch_array($result)){
 	$subquery1 = "SELECT f_name FROM fridges WHERE f_id =" . $row['rf_id'];
 	$result1 = $mysqli->query($subquery1);
 	while ($row1 = mysqli_fetch_array($result1)){
-		$pdf->Cell( 25, 12, $row1['f_name'], 1, 0, 'C', true );
+		$pdf->Cell( 28, 12, $row1['f_name'], 1, 0, 'C', true );
 	}
 	$subquery1 = "SELECT s_name FROM servicecenter WHERE s_id =" . $row['rs_id'];
 	$result1 = $mysqli->query($subquery1);
 	while ($row1 = mysqli_fetch_array($result1)){
-		$pdf->Cell( 25, 12, $row1['s_name'], 1, 0, 'C', true );
+		$pdf->Cell( 20, 12, $row1['s_name'], 1, 0, 'C', true );
 	}
-	$pdf->Cell( 25, 12, $row['r_fio'], 1, 0, 'C', true );
+	$pdf->Cell( 40, 12, $row['r_fio'], 1, 0, 'C', true );
 	$pdf->Cell( 20, 12, $row['r_cost'], 1, 0, 'C', true );
 	$pdf->Ln( 12 );
 	$k++;
