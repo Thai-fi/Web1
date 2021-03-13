@@ -13,6 +13,15 @@
 		$('<input type="radio" id="chooseZero" name="chooseRadio" value="circle" onClick="Clean()">').appendTo('#chooseFigure');
 		$('<label for="chooseZero">Нолик</label>').appendTo('#chooseFigure');
 
+		$('<div/>', {
+			id: 'firstMove',
+		}).css({'max-width': '140px', 'margin-top': '30px'}).appendTo(this)
+
+		$('<input type="radio" id="first" name="firstMoveRadio" value="player" onClick="Clean()" checked>').appendTo('#firstMove');
+		$('<label for="first">Ходить первым</label>').appendTo('#firstMove');
+		$('<input type="radio" id="second" name="firstMoveRadio" value="comp" onClick="Clean()">').appendTo('#firstMove');
+		$('<label for="second">Ходить вторым</label>').appendTo('#firstMove');
+
 		$('<table />', {
 			id: 'idTable',
 		}).appendTo(this)
@@ -56,8 +65,15 @@ function Clean(){
 		$("#"+i).empty();
 		fieldMatrix[i] = 0;
 	}
+
+
 	move = false;
 	victoryFlag = false;
+
+	if ($('input[name="firstMoveRadio"]:checked').val() == 'comp'){
+		move = true;
+		PrintComp()
+	}
 }
 
 function ChoisePlayerComp(){
@@ -81,8 +97,7 @@ function PrintPlayer(obj){
 
 function PrintComp(){
 	if(move && !victoryFlag){
-		var compId = Calculate();
-		Print(compId, Comp);
+		Print(Calculate(), Comp);
 	}
 	checkVictory(Comp);
 }
